@@ -6,26 +6,50 @@ puts "Which line do you want to start with?"
 start_line = gets.chomp
 puts "You have selected " + start_line
 
-
 puts "Which station are you starting at?"
 start_station = gets.chomp
 puts "You are starting at " + start_station + "on the " + start_line + "line"
+
+# puts "Which line do you want to get to?"
+# end_line = gets.chomp
+# puts "You have selected " + end_line
 
 puts "Which station do you want to get to?"
 end_station = gets.chomp
 puts "You are going to " + end_station
 
-if start_line == "n_line"
-   stop_amount = MTA[:n_line].index(end_station) - MTA[:n_line].index(start_station)
+
+
+  if start_line == "n_line" && MTA[:n_line].index(end_station)
+     stop_amount = MTA[:n_line].index(end_station) - MTA[:n_line].index(start_station)
+    stop_amount = stop_amount.abs
+    puts "Your journey will take " + stop_amount.to_s + " stops"
+  end
+
+  if start_line == "l_line" && MTA[:l_line].index(end_station)
+    stop_amount = MTA[:l_line].index(end_station) - MTA[:l_line].index(start_station)
+    stop_amount = stop_amount.abs
+    puts "Your journey will take " + stop_amount.to_s + " stops"
+  end
+
+  if start_line == "six_line" && MTA[:six_line].index(end_station)
+   stop_amount = MTA[:six_line].index(end_station) - MTA[:six_line].index(start_station)
    stop_amount = stop_amount.abs
    puts "Your journey will take " + stop_amount.to_s + " stops"
+  end
+
+
+startline_symbol = start_line.to_sym
+
+if MTA[startline_symbol].count(end_station) == 0
+  puts "fish"
 end
 
-if start_line == "l_line"
-   stop_amount = MTA[:l_line].index(end_station) - MTA[:l_line].index(start_station)
-   stop_amount = stop_amount.abs
-   puts "Your journey will take " + stop_amount.to_s + " stops"
-end
+
+
+
+
+
 
 # if start_line != 'N' || 'L' || '6'
 #   puts "that line doesn't exist!"
