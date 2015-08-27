@@ -22,7 +22,7 @@ if start_line == "n_line"
 end
 
 if start_line == "l_line"
-   stop_amount = MTA[:n_line].index(end_station) - MTA[:n_line].index(start_station)
+   stop_amount = MTA[:l_line].index(end_station) - MTA[:l_line].index(start_station)
    stop_amount = stop_amount.abs
    puts "Your journey will take " + stop_amount.to_s + " stops"
 end
